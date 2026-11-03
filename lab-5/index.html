@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>3D Demo: Buffer vs GLTF</title>
+    <style>
+      body { margin: 0; }
+      #toggle-container {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 100;
+      }
+      button {
+        margin: 0 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toggle-container">
+      <button onclick="window.location.href='?script=main'">Buffer Geometry</button>
+      <button onclick="window.location.href='?script=gitf'">GLTF Model</button>
+    </div>
+    <script>
+      // Load the correct script based on URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const scriptName = urlParams.get('script') === 'gitf' ? 'gitf.js' : 'main.js';
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.src = scriptName;
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
